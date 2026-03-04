@@ -239,7 +239,7 @@ h4 {
   pointer-events: none;
 }
 
-logo img,
+.logo img,
 card-cover,
 produto-img,
 modal-imagem img {
