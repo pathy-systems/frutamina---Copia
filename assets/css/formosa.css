@@ -985,6 +985,36 @@
     animation-delay: 0.8s;
 }
 
+@media (max-width: 1024px) {
+    .home-formosa h1 {
+        font-size: 3rem;
+        max-width: max-content;
+        right: 20%;
+    }
+
+    .home-formosa h2 {
+        font-size: 1.5rem;
+        width: max-content;
+        top: 55%;
+        right: 23%;
+    }
+
+    .btn-formosa-home {
+        font-size: 1.5rem;
+        top: 60%;
+    }
+
+    /* NUTRICIONAL */
+
+    .nutricional {
+        grid-template-columns: 1fr;
+    }
+
+    .nutricional img {
+        margin: 0 auto 0 auto;
+    }
+}
+
 @media (max-width: 834px) {
 .home-formosa h1 {
         font-size: 2rem;
@@ -1047,7 +1077,7 @@
 
     .home-formosa h1 {
         display: flex;
-        font-size: 1.3rem;
+        font-size: 2rem;
         justify-content: center;
         margin: 0 auto 0 auto;
         top: 50%;
@@ -1059,28 +1089,24 @@
     .home-formosa h2 {
         display: flex;
         position: absolute;
-        font-size: 0.9rem;
+        font-size: 1.2rem;
         justify-content: center;
         top: 55%;
-        left: 12%;
-        width: 300px;
-        text-align: center;
-
+        left: 10%;
+        width: max-content; 
     }
 
     .btn-formosa-home {
         display: flex;
         position: absolute;
         justify-content: center;
-        left: 30%;
+        left: 10%;
         margin-top: 2rem;
         width: max-content;
-
+        font-size: 1.2rem;
     }
 
-    .btn-formosa-home span {
-        font-size: 0.8rem;
-    }
+    
 
     .home-formosa img {
         width: 100vw;
@@ -1237,4 +1263,24 @@
 
 
 
+}
+
+@media (max-width:440px) {
+    .home-formosa h1 {
+        font-size: 1.2rem;
+        justify-content: center;
+        left: 15%;
+    }
+
+    .home-formosa h2 {
+        font-size: .9rem;
+        max-width: 300px;
+        left: 15%;
+        text-align: center;
+    }
+
+    .btn-formosa-home {
+        font-size: .9rem;
+        left: 30%;
+    }
 }
