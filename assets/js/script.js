@@ -4,38 +4,38 @@ document.addEventListener("DOMContentLoaded", () => {
   const html = document.documentElement;
 
   // ======= TEMA =======
-  const toggleThemeBtn = document.getElementById('toggleTheme');
+  // Support multiple toggle elements (in case markup is duplicated)
+  const toggleThemeBtns = document.querySelectorAll('#toggleTheme');
   const savedTheme = localStorage.getItem('theme');
+
+  const setIcon = (btn, dark) => {
+    if (!btn) return;
+    btn.classList.toggle('bi-sun', !dark);
+    btn.classList.toggle('bi-moon', dark);
+  };
 
   if (savedTheme === 'dark') {
     html.setAttribute('data-theme', 'dark');
-    if (toggleThemeBtn) {
-      toggleThemeBtn.classList.remove('bi-sun');
-      toggleThemeBtn.classList.add('bi-moon');
-    }
+    toggleThemeBtns.forEach(btn => setIcon(btn, true));
   } else {
     html.removeAttribute('data-theme');
-    if (toggleThemeBtn) {
-      toggleThemeBtn.classList.remove('bi-moon');
-      toggleThemeBtn.classList.add('bi-sun');
-    }
+    toggleThemeBtns.forEach(btn => setIcon(btn, false));
   }
 
-  if (toggleThemeBtn) {
-    toggleThemeBtn.addEventListener('click', function () {
-      if (html.getAttribute('data-theme') === 'dark') {
+  toggleThemeBtns.forEach(btn => {
+    btn.addEventListener('click', function () {
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      if (isDark) {
         html.removeAttribute('data-theme');
-        toggleThemeBtn.classList.remove('bi-moon');
-        toggleThemeBtn.classList.add('bi-sun');
+        toggleThemeBtns.forEach(b => setIcon(b, false));
         localStorage.setItem('theme', 'light');
       } else {
         html.setAttribute('data-theme', 'dark');
-        toggleThemeBtn.classList.remove('bi-sun');
-        toggleThemeBtn.classList.add('bi-moon');
+        toggleThemeBtns.forEach(b => setIcon(b, true));
         localStorage.setItem('theme', 'dark');
       }
     });
-  }
+  });
 
   // ======= SCROLLSPY =======
   const sections = document.querySelectorAll("section[id]");
