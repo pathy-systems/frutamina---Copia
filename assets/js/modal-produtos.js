@@ -1211,13 +1211,28 @@ function preencherModal(produto) {
     if (progresso) {
         progresso.textContent = `${modalState.index + 1}/${modalState.lista.length}`;
     }
+
+    // Pré-carregar a próxima imagem (melhora a fluidez ao navegar)
+    preloadNextImage();
 }
+
 
 
 function fecharModal() {
     const modal = document.getElementById("modalProduto");
     if (modal) modal.style.display = "none";
 }
+
+// carrega silenciosamente a imagem seguinte no array de estado
+function preloadNextImage() {
+    if (modalState.lista.length > 1) {
+        const proximoIndex = (modalState.index + 1) % modalState.lista.length;
+        const imgPreload = new Image();
+        imgPreload.src = modalState.lista[proximoIndex].imagem || "";
+    }
+}
+
+
 
 function proximoProduto() {
     if (!modalState.lista.length) return;
